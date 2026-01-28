@@ -29,8 +29,7 @@
 
 ### 🏠 Dashboard
 
-<img src="screenshots/dashboard.jpeg" width="250"/>
-<img src="screenshots/dashboard_2.jpeg" width="250"/>
+<img src="screenshots/dashboard.jpeg" width="250"/> <img src="screenshots/dashboard_2.jpeg" width="250"/>
 
 ### 📊 Trends
 
@@ -38,7 +37,7 @@
 
 ### ⚙️ Preferences
 
-<img src="screenshots/preferences.jpeg" width="250"/>
+<img src="screenshots/prefrences.jpeg" width="250"/>
 
 </div>
 
@@ -48,7 +47,7 @@
 
 > Full app walkthrough and core features demonstration
 
-[▶️ Watch Demo Video](screenshots/demo.mp4)
+[▶️ Watch Demo Video](screenshots/vid.mp4)
 
 ## 🏗 Architecture
 
