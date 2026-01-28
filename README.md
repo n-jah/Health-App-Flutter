@@ -2,7 +2,6 @@
 
 <div align="center">
 
-![HealthTrack Logo](screenshots/logo.png)
 
 **Track your health metrics and visualize your progress over time**
 
@@ -11,12 +10,47 @@
 [![Android](https://img.shields.io/badge/Android-8.0+-3DDC84?logo=android)](https://www.android.com)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-[Features](#-featharts**: Line charts with statistics for 7-day trends
-- **Customizable Settings**: Toggle individual health metrics on/off
-- **Theme Support**: Light and dark themes with system preference detection
-- **Permission Management**: Granular health data permission requests
+</div>
 
-## Architecture
+---
+
+## 🚀 Features
+
+* **Health Metrics Tracking**: Steps, heart rate, calories burned, and sleep duration
+* **Charts & Statistics**: Line charts with 7-day trends
+* **Customizable Settings**: Toggle individual health metrics on/off
+* **Theme Support**: Light and dark themes with system preference detection
+* **Permission Management**: Granular health data permission requests
+
+---
+## 📸 Screenshots & Demo
+
+<div align="center">
+
+### 🏠 Dashboard
+
+<img src="screenshots/dashboard.jpeg" width="250"/>
+<img src="screenshots/dashboard_2.jpeg" width="250"/>
+
+### 📊 Trends
+
+<img src="screenshots/trends.jpeg" width="250"/>
+
+### ⚙️ Preferences
+
+<img src="screenshots/preferences.jpeg" width="250"/>
+
+</div>
+
+---
+
+## 🎥 Demo Video
+
+> Full app walkthrough and core features demonstration
+
+[▶️ Watch Demo Video](screenshots/demo.mp4)
+
+## 🏗 Architecture
 
 ### Project Structure
 
@@ -49,32 +83,32 @@ lib/
 
 ### Architecture Decisions
 
-1. **Feature-Based Organization**: Code is organized by feature rather than layer, improving maintainability and scalability.
+1. **Feature-Based Organization**: Code is organized by feature rather than layer for maintainability and scalability.
+2. **Service Abstraction**: `HealthService` abstracts all platform interactions, providing a clean API for UI components.
+3. **Simple State Management**: Uses `setState` for local state management, avoiding unnecessary complexity for MVP.
+4. **Reusable Widgets**: Widgets like `MetricCard` and `WeeklySummaryCard` promote code reuse.
+5. **Material 3 Design**: Leverages Flutter's Material Design 3 components for a polished look.
 
-2. **Service Abstraction**: `HealthService` class abstracts all health platform interactions, providing a clean API for UI components.
+---
 
-3. **Simple State Management**: Uses `setState` for local state management, avoiding unnecessary complexity for this MVP scope.
+## 📊 Supported Health Data
 
-4. **Reusable Widgets**: Custom widgets like `MetricCard` and `WeeklySummaryCard` promote code reuse and consistency.
+| Metric          | Android (Google Fit) | iOS (HealthKit) | Unit  |
+| --------------- | -------------------- | --------------- | ----- |
+| Steps           | ✅                    | ✅               | steps |
+| Heart Rate      | ✅                    | ✅               | bpm   |
+| Calories Burned | ✅                    | ✅               | kcal  |
+| Sleep Duration  | ✅                    | ✅               | hours |
 
-5. **Material 3 Design**: Leverages Flutter's latest Material Design 3 components for a modern, polished look.
+---
 
-## Supported Health Data
-
-| Metric | Android (Google Fit) | iOS (HealthKit) | Unit |
-|--------|---------------------|-----------------|------|
-| Steps | ✅ | ✅ | steps |
-| Heart Rate | ✅ | ✅ | bpm |
-| Calories Burned | ✅ | ✅ | kcal |
-| Sleep Duration | ✅ | ✅ | hours |
-
-## Setup & Installation
+## ⚡ Setup & Installation
 
 ### Prerequisites
 
-- Flutter SDK (3.10.7 or higher)
-- Dart SDK
-- Android Studio / Xcode for platform-specific builds
+* Flutter SDK (3.10.7 or higher)
+* Dart SDK
+* Android Studio / Xcode for platform-specific builds
 
 ### Dependencies
 
@@ -88,31 +122,44 @@ dependencies:
 
 ### Installation Steps
 
-1. Clone the repository
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/USERNAME/REPO_NAME.git
+   cd REPO_NAME
+   ```
+
 2. Install dependencies:
+
    ```bash
    flutter pub get
    ```
 
 3. **Android Setup**:
-   - Add required permissions to `android/app/src/main/AndroidManifest.xml`
-   - Configure Google Fit API in Google Cloud Console
-   - Add OAuth client ID
+
+   * Add required permissions to `android/app/src/main/AndroidManifest.xml`
+   * Configure Google Fit API in Google Cloud Console
+   * Add OAuth client ID
 
 4. **iOS Setup**:
-   - Add HealthKit capability in Xcode
-   - Add usage descriptions to `Info.plist`
+
+   * Enable HealthKit capability in Xcode
+   * Add usage descriptions to `Info.plist`
 
 5. Run the app:
+
    ```bash
    flutter run
    ```
 
-## Platform-Specific Configuration
+---
+
+## 📱 Platform-Specific Configuration
 
 ### Android (Google Fit)
 
 Add to `AndroidManifest.xml`:
+
 ```xml
 <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
 <uses-permission android:name="android.permission.health.READ_STEPS"/>
@@ -122,6 +169,7 @@ Add to `AndroidManifest.xml`:
 ### iOS (HealthKit)
 
 Add to `Info.plist`:
+
 ```xml
 <key>NSHealthShareUsageDescription</key>
 <string>This app needs access to your health data to display your fitness metrics</string>
@@ -129,40 +177,38 @@ Add to `Info.plist`:
 <string>This app needs to update your health data</string>
 ```
 
-## Known Limitations
+---
 
-1. **Google Fit Deprecation**: Google Fit API is being deprecated in favor of Health Connect. Future versions should migrate to Health Connect for Android.
+## ⚠️ Known Limitations
 
-2. **Read-Only Implementation**: Current version focuses on reading health data. Writing data is not implemented in this MVP.
+1. Google Fit API deprecation; future Android versions should migrate to Health Connect
+2. Read-only implementation; writing data is not implemented
+3. Data visualization limited to last 7 days
+4. No backend; all data is device-local
+5. Limited metrics (currently 4 core metrics)
+6. Permission handling may require extra configuration per platform
 
-3. **7-Day Window**: Data visualization is limited to the last 7 days for simplicity and performance.
+---
 
-4. **No Backend**: All data is fetched directly from device health platforms. No cloud storage or sync.
+## 🔮 Future Enhancements
 
-5. **Limited Metrics**: Only 4 core health metrics are supported. The architecture allows easy addition of more metrics.
+* Migration to Health Connect for Android
+* Extended date range selection
+* Data export functionality
+* Goal setting and achievement tracking
+* Notifications and reminders
+* More health metrics (water intake, weight, etc.)
+* Data insights and trends analysis
 
-6. **Permission Handling**: Some platforms may require additional configuration for certain health data types.
+---
 
-## Future Enhancements
+## 📌 Technical Notes
 
-- Migration to Health Connect for Android
-- Extended date range selection
-- Data export functionality
-- Goal setting and achievement tracking
-- Notifications and reminders
-- More health metrics (water intake, weight, etc.)
-- Data insights and trends analysis
+* Minimum SDK: Android 8.0 (API 26), iOS 12.0
+* State Management: `setState` for MVP scope
+* Error Handling: Graceful degradation when permissions are denied or data unavailable
+* Performance: Efficient date-based queries
+* UI/UX: Material 3 design with smooth animations and transitions
 
-## Technical Notes
+---
 
-- **Minimum SDK**: Android 8.0 (API 26), iOS 12.0
-- **State Management**: Simple setState approach, suitable for MVP scope
-- **Error Handling**: Graceful degradation when permissions are denied or data is unavailable
-- **Performance**: Efficient data fetching with date-based queries
-- **UI/UX**: Material 3 design with smooth animations and transitions
-
-**Android SDK 26+ Requirement**: The health package requires Android 8.0 or higher for Health Connect support. This covers 95%+ of active Android devices.
-
-## License
-
-This is a technical evaluation project and is not intended for production use.
